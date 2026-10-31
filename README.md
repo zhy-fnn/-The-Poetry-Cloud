@@ -110,8 +110,8 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   --version             show program's version number and exit
-[dry-run] data: E:\apeiria\ML project\the poetry cloud\data\poetry_sft_v1
-[dry-run] out: E:\apeiria\ML project\the poetry cloud\out\sft
+[dry-run] data: .\the poetry cloud\data\poetry_sft_v1
+[dry-run] out: .\the poetry cloud\out\sft
 [dry-run] vocab: 8888
 [dry-run] train: 19801 首 / 1207124 tokens
 [dry-run] val: 199 首 / 11944 tokens
@@ -148,8 +148,8 @@ python CLI.py train --dry-run
 期待结果：
 
 ```text
-[dry-run] data: E:\apeiria\ML project\the poetry cloud\data\poetry_sft_v1
-[dry-run] out: E:\apeiria\ML project\the poetry cloud\out\sft
+[dry-run] data: .\the poetry cloud\data\poetry_sft_v1
+[dry-run] out: .\the poetry cloud\out\sft
 [dry-run] vocab: 8888
 [dry-run] train: 19801 首 / 1207124 tokens
 [dry-run] val: 199 首 / 11944 tokens
@@ -241,4 +241,3 @@ the poetry cloud/
 ·SFT 最佳步数：500
 
 ·SFT 验证集 loss：4.2399
-
