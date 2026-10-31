@@ -38,7 +38,7 @@ python -m pip install -r requirements.txt
 
 | 路径 | 用途 |
 |---|---|
-| data/poetry_char_v3/meta.pkl | 字符表 |
+| data/poetry_char_v2/meta.pkl | 字符表 |
 | data/poetry_char_v3/yun_trad.json | 押韵检查 |
 | data/poetry_sft_v1/meta.pkl | SFT 数据元信息 |
 | data/poetry_sft_v1/train.bin | SFT 训练数据 |
