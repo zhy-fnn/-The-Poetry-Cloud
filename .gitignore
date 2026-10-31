@@ -5,6 +5,7 @@ __pycache__/
 out/
 archive/
 data/
+dist/
 
 *.pt
 *.pth
