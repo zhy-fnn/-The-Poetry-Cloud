@@ -27,8 +27,16 @@
 Windows 安装：
 
 ```powershell
-python -m venv .venv
+py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+Linux / macOS 安装：
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
@@ -38,7 +46,8 @@ python -m pip install -r requirements.txt
 
 | 路径 | 用途 |
 |---|---|
-| data/poetry_char_v2/meta.pkl | 字符表 |
+| data/poetry_char_v2/meta.pkl | 分词器字符表 |
+| data/poetry_char_v3/meta.pkl | 采样字符表 |
 | data/poetry_char_v3/yun_trad.json | 押韵检查 |
 | data/poetry_sft_v1/meta.pkl | SFT 数据元信息 |
 | data/poetry_sft_v1/train.bin | SFT 训练数据 |
@@ -46,7 +55,24 @@ python -m pip install -r requirements.txt
 | data/poetry_sft_v1/sft_manifest.json | 数据统计 |
 | out/pretrain/ckpt/ckptbest.pt | 预训练检查点 |
 
-### 3.验证安装
+### 3.下载模型检查点
+
+仓库不包含模型权重，请从 GitHub Release 下载：
+
+- [ckptbest.pt](https://github.com/zhy-fnn/-The-Poetry-Cloud/releases/download/v0.1.0/ckptbest.pt)
+- 文件大小：269.58 MB
+- SHA256：`7B4AFF1FBB0C9A85C9EB769CF26C793C8C2C30725E313502AF5995353315ED81`
+
+Windows PowerShell 中创建目录并检查文件：
+
+```powershell
+New-Item -ItemType Directory -Force out\pretrain\ckpt
+Get-FileHash .\out\pretrain\ckpt\ckptbest.pt -Algorithm SHA256
+```
+
+将下载的 `ckptbest.pt` 放到 `out/pretrain/ckpt/ckptbest.pt`。文件哈希应与上面的 SHA256 一致。
+
+### 4.验证安装
 
 ```powershell
 python CLI.py --help
@@ -157,7 +183,7 @@ python CLI.py best_of_n --n_per_titles 30
 
 | 命令 | 作用 |
 | --- | --- |
-| sample | 从采样点生成古诗 |
+| sample | 从检查点生成古诗 |
 | train --dry-run | 测试训练数据是否正确 |
 | best_of_n | 生成多首诗并选出符合韵律的 |
 | best_of_n --smoke | 小范围测试 |
