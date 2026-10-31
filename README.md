@@ -55,7 +55,24 @@ python -m pip install -r requirements.txt
 | data/poetry_sft_v1/sft_manifest.json | 数据统计 |
 | out/pretrain/ckpt/ckptbest.pt | 预训练检查点 |
 
-### 3.下载模型检查点
+### 3.下载运行数据
+
+仓库不包含 `data/`。请下载最小运行数据包，并解压到项目根目录：
+
+- [poetry-cloud-runtime-data-v0.1.0.zip](https://github.com/zhy-fnn/-The-Poetry-Cloud/releases/download/v0.1.0/poetry-cloud-runtime-data-v0.1.0.zip)
+- 文件大小：1.671 MB
+- SHA256：`26DF481DA5ED3DCDD4DD69C18A17842307171AA3799C2C60654D785F0AF5A237`
+
+```powershell
+Invoke-WebRequest `
+  -Uri https://github.com/zhy-fnn/-The-Poetry-Cloud/releases/download/v0.1.0/poetry-cloud-runtime-data-v0.1.0.zip `
+  -OutFile poetry-cloud-runtime-data-v0.1.0.zip
+
+Get-FileHash .\poetry-cloud-runtime-data-v0.1.0.zip -Algorithm SHA256
+Expand-Archive .\poetry-cloud-runtime-data-v0.1.0.zip -DestinationPath .
+```
+
+### 4.下载模型检查点
 
 仓库不包含模型权重，请从 GitHub Release 下载：
 
@@ -72,7 +89,7 @@ Get-FileHash .\out\pretrain\ckpt\ckptbest.pt -Algorithm SHA256
 
 将下载的 `ckptbest.pt` 放到 `out/pretrain/ckpt/ckptbest.pt`。文件哈希应与上面的 SHA256 一致。
 
-### 4.验证安装
+### 5.验证安装
 
 ```powershell
 python CLI.py --help
@@ -98,7 +115,7 @@ options:
 [dry-run] vocab: 8888
 [dry-run] train: 19801 首 / 1207124 tokens
 [dry-run] val: 199 首 / 11944 tokens
-[dry-run] init ckpt: E:\apeiria\ML project\the poetry cloud\out\pretrain\ckpt\ckptbest.pt
+[dry-run] init ckpt: .\the poetry cloud\out\pretrain\ckpt\ckptbest.pt
 [dry-run] all passed
 ```
 
@@ -136,7 +153,7 @@ python CLI.py train --dry-run
 [dry-run] vocab: 8888
 [dry-run] train: 19801 首 / 1207124 tokens
 [dry-run] val: 199 首 / 11944 tokens
-[dry-run] init ckpt: E:\apeiria\ML project\the poetry cloud\out\pretrain\ckpt\ckptbest.pt
+[dry-run] init ckpt: .\the poetry cloud\out\pretrain\ckpt\ckptbest.pt
 [dry-run] all passed
 ```
 
